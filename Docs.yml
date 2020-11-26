@@ -1,0 +1,163 @@
+@common.js
+- Mini Framework to Make Javascrcipt Easy
+- functions: @common.log()
+             - parameters: @log
+                           - default: null
+                           - accept: anys
+
+@common Obj
+- description: The common Object is the Object where all functions are Implemented
+- type: Object
+
+@error Obj
+- description: The error Object is the Object where all error releted functions are Implemented
+- type: Object
+- functions: @error.raise()
+             - description: To Give User Error.
+             - parameters: @data
+                           - default: null
+                           - accept: any
+                           @dataLog
+                           - default: true
+                           - accept: any (bool)
+
+@common.ajax
+- type: Object
+- functions: @common.ajax.post()
+             - description: Make a Post AJAX Request.
+             - parameters: @target
+                           - default: null
+                           - accept: any (string(path))
+                           @postData
+                           - default: null
+                           - accept: any (Object)
+                           @callBack
+                           - default: (data, status)=>{}
+                           - accept: any (function)
+                           @log
+                           - default: true
+                           - accept: any (bool)
+
+@common.data
+- type: Object
+- functions: --No Functions--
+- childs: @common.data.logs
+          - type: array
+
+@common.time
+- type: Object
+- functions: @common.time.getTime(dateMain, format, hourFormat)
+             - description: This Function Used to get Date&Time With Format.
+             - parameters: @dateMain
+                           - default: new Date()
+                           - accept: any (Date Object)
+                           @format
+                           - default: null
+                           - accept: any (string)
+                           - ref: common.time.data.validFormats (array)
+                           @hourFormat
+                           - default: "24"
+                           - accept: "12", "24" (string)
+             -return: any (string)
+             @common.time.formatTime(dateMain, format, hourFormat)
+             - description: This Function Used to Format Given Date&Time Object.
+             -parameters: @dateMain
+                          - default: new Date()
+                          - accept: any (Date Object)
+                          @format
+                          - default: "DD-MM-YYYY HH:II:SS:MS AMPM"
+                          - accept: any (string)
+                          - ref: common.time.data.validFormats (array)
+                          @hourFormat
+                          - default: "24"
+                          - accept: "12", "24" (string)
+             -return: any (string)
+- childs: @common.time.data
+          - description: Most Used of common.time Object
+          - type: Object
+          - childs: @common.time.data.validformats
+                    - description: All Valid Date&Time Formats Used in common.time.getTime() and common.time.formatTime()
+                    - type: array
+            
+@common.fileStructure
+- type: Object
+- functions: @common.fileStructure.mkDir()
+             - description: To Make Directory/Folder At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.mkFile()
+             - description: To Make File At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.writeFile()
+             - description: To Make Write/Create File At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @content:
+                           - default: null
+                           - accept: any (string)
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.delDir()
+             - description: To Delete Directory/Folder At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.delFile()
+             - description: To Delete File At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.move()
+             - description: To move Directory/Folder/File At Spacific Path.
+             - parameters: @curPath
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)]) 
+                           @targetPath
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (string)
+             @common.fileStructure.getDirFiles()
+             - description: To Get All Files Name In Folder/Directory At Spacific Path.
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path)) (array[any (string)])
+                           @callBack
+                           - default: (data, status)=>{ }
+                           - accept: any (function)
+             - return: any (array) 
+
+@common.utils
+- type: Object
+- functions: @openWeb
+             - description: Open File In New Tab
+             - parameters: @path
+                           - default: null
+                           - accept: any (string(path))
+             - return: @path
+
+

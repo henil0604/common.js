@@ -1,0 +1,38 @@
+
+@common.js
+
+- common.js is the Mini Framework.
+
+- Under Developmetn By Henil Malaviya.
+
+
+@v0.0.1
+
+- Added common Object
+- Added error Object
+- Implemented common.log 
+- Implemented error.raise
+- Implemented common.ajax Object For AJAX Request Releted Functions
+- Implemented common.time Object For Time Releted Functions
+- Implemented common.time.getTime
+- Implemented common.time.formatTime
+- Implemented common.ajax.post
+
+
+@v0.1.0
+
+- Added common.fileStructure
+- Added common.utils
+- Implemented common.fileStructure.mkDir
+- Implemented common.fileStructure.mkFile
+- Implemented common.fileStructure.writeFile
+- Implemented common.fileStructure.delDir
+- Implemented common.fileStructure.delFile
+- Implemented common.fileStructure.move
+- Implemented common.fileStructure.getDirFiles
+- Implemented common.utils.openWeb
+
+
+
+
+
