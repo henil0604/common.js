@@ -4,12 +4,15 @@ var error = {};
 common.ajax = {};
 common.data = {};
 common.time = {};
+common.fileStructure = {};
+common.utils = {};
 
 common.time.data = {};
 
 common.data.logs = [];
 
 
+// common.time Data
 common.time.data.validformats = [
     "DD-MM-YYYY HH:II:SS:MS AMPM",
     "DD-MM-YYYY HH:II:SS:MS",
@@ -48,7 +51,7 @@ common.time.data.validformats = [
 ];
 
 
-
+// common.time Obj
 common.time.getTime = (dateMain = new Date(), format = null, hourFormat = "24") => {
 
     returnStr = "";
@@ -221,7 +224,7 @@ common.time.formatTime = (dateMain = new Date(), format = "DD-MM-YYYY HH:II:SS:M
 
 }
 
-
+// error obj
 error.raise = (data, dataLog = true) => {
     console.error(data)
 
@@ -230,7 +233,7 @@ error.raise = (data, dataLog = true) => {
     }
 }
 
-
+// common.log to log data into common.data.log
 common.log = (log = null) => {
 
     let obj = {
@@ -241,7 +244,7 @@ common.log = (log = null) => {
     common.data.logs.push(obj)
 }
 
-
+// common.ajax Obj
 common.ajax.post = (target = null, postData = null, callback = null, log = true) => {
 
     $.post(target, postData, (data, status) => {
@@ -268,22 +271,233 @@ common.ajax.post = (target = null, postData = null, callback = null, log = true)
 }
 
 
+// common.fileStructure to Make File, Make Folders, Write on File, Delete Files and Folders
+common.fileStructure.mkDir = (path = null, callBack = (data, status) => { }) => {
+    if (typeof (path) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.mkDir(path[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.mkDir.php", {
+            path: path
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path,
+                    },
+                    callBack: callBack,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+
+}
+
+common.fileStructure.mkFile = (path, callBack = (data, status) => { }) => {
+    if (typeof (path) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.mkFile(path[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.mkFile.php", {
+            path: path
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path,
+                    },
+                    callBack: callBack,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+}
+
+common.fileStructure.writeFile = (path, content = null, callback = (data, status) => { }) => {
+    if (typeof (path) == "object" && typeof (content) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.writeFile(path[i], content[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.writeFile.php", {
+            path: path,
+            content: content
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path,
+                        content: content,
+                    },
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+}
+
+common.fileStructure.delDir = (path = null, callBack = (data, status) => { }) => {
+    if (typeof (path) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.mkDir(path[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.delDir.php", {
+            path: path
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path,
+                    },
+                    callBack: callBack,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+
+}
+
+common.fileStructure.delFile = (path, callBack = (data, status) => { }) => {
+    if (typeof (path) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.mkFile(path[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.delFile.php", {
+            path: path
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path,
+                    },
+                    callBack: callBack,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+}
+
+common.fileStructure.move = (curPath, targetPath, callBack = (data, status) => { }) => {
+    if (typeof (curPath) == "object") {
+        for (let i = 0; i < curPath.length; i++) {
+            common.fileStructure.move(curPath[i], targetPath[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.move.php", {
+            curPath: curPath,
+            targetPath: targetPath
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        curPath: curPath,
+                        targetPath: targetPath
+                    },
+                    callBack: callback,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+}
+
+common.fileStructure.getDirFiles = (path, callBack = (data, status) => { }) => {
+    if (typeof (path) == "object") {
+        for (let i = 0; i < path.length; i++) {
+            common.fileStructure.getDirFiles(path[i])
+        }
+    } else {
+        common.ajax.post("common.fileStructure.getDirFiles.php", {
+            path: path,
+        }, (data, status) => {
+
+            if (typeof (callBack) == "function") {
+                callBack(data, status);
+            }
+
+            common.log({
+                log: {
+                    postData: {
+                        path: path
+                    },
+                    callBack: callBack,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                }
+            })
+        })
+    }
+
+}
+
+
+// common.utils Obj
+common.utils.openWeb = (path) => {
+    window.open(
+        path,
+        '_blank'
+    );
+}
+
 
 
 console.log(common)
 
-
-// Examples:
-
-// common.log("ok")
-
-/*
-AJAX POST Request:
-
-common.ajax.post("common.ajax.post.php", {
-    test: "123"
-}, (data, status) => {
-    console.log(data)
-})
-
-*/
