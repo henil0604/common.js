@@ -33,6 +33,10 @@
 - Implemented common.utils.openWeb
 
 
+@v0.1.1
 
+
+- Implemented common.utils.randomNumber
+- Implemented common.utils.randomToken
 
 

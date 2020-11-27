@@ -497,6 +497,21 @@ common.utils.openWeb = (path) => {
     );
 }
 
+common.utils.randomNumber = (min = 0, max = 1000) => {
+    return parseInt(Math.random() * (max - min) + min);
+}
+
+common.utils.randomToken = (length = 10) => {
+    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+    var b = [];
+    for (var i = 0; i < length; i++) {
+        var j = (Math.random() * (a.length - 1)).toFixed(0);
+        b[i] = a[j];
+    }
+    return b.join("");
+}
+
+
 
 
 console.log(common)

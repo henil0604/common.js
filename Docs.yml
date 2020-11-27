@@ -158,11 +158,25 @@
 
 @common.utils
 - type: Object
-- functions: @openWeb
+- functions: @common.utils.openWeb()
              - description: Open File In New Tab
              - parameters: @path
                            - default: null
                            - accept: any (string(path))
              - return: @path
-
+             @common.utils.randomNumber()
+             - description: To Get Random Number
+             - parameters: @min
+                           - default: 0
+                           - accept: any (int)
+                           @max
+                           - default: 1000
+                           - accept: any (int)
+             - return: any (int)
+             @common.utils.randomToken()
+             - description: To get Random Token
+             - parameters: @length
+                           - default: 10
+                           - accept: any (int)
+             - return: any (string)
 
