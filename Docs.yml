@@ -4,6 +4,11 @@
              - parameters: @log
                            - default: null
                            - accept: anys
+- childs: @common.ajax
+          @common.data          
+          @common.time          
+          @common.fileStructure          
+          @common.utils          
 
 @common Obj
 - description: The common Object is the Object where all functions are Implemented
@@ -46,7 +51,7 @@
 
 @common.time
 - type: Object
-- functions: @common.time.getTime(dateMain, format, hourFormat)
+- functions: @common.time.getTime()
              - description: This Function Used to get Date&Time With Format.
              - parameters: @dateMain
                            - default: new Date()
@@ -58,10 +63,10 @@
                            @hourFormat
                            - default: "24"
                            - accept: "12", "24" (string)
-             -return: any (string)
-             @common.time.formatTime(dateMain, format, hourFormat)
+             - return: any (string)
+             @common.time.formatTime()
              - description: This Function Used to Format Given Date&Time Object.
-             -parameters: @dateMain
+             - parameters: @dateMain
                           - default: new Date()
                           - accept: any (Date Object)
                           @format
@@ -71,7 +76,7 @@
                           @hourFormat
                           - default: "24"
                           - accept: "12", "24" (string)
-             -return: any (string)
+             - return: any (string)
 - childs: @common.time.data
           - description: Most Used of common.time Object
           - type: Object
