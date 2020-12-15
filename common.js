@@ -268,6 +268,28 @@ common.ajax.post = (target = null, postData = null, callback = null, log = true)
         }
     })
 
+    return null;
+}
+
+common.ajax.asyncPost = (target = null, postData = null, log = true) => {
+
+    return new Promise((resolve, reject) => {
+        $.post(target, postData, (data, status) => {
+            resolve({ data: data, status: status })
+
+            if (log) {
+                common.log({
+                    target: target,
+                    postData: postData,
+                    callbackData: {
+                        data: data,
+                        status: status
+                    }
+                });
+            }
+        })
+    })
+
 }
 
 
@@ -514,5 +536,5 @@ common.utils.randomToken = (length = 10) => {
 
 
 
-console.log(common)
+// console.log(common)
 

@@ -35,8 +35,13 @@
 
 @v0.1.1
 
-
 - Implemented common.utils.randomNumber
 - Implemented common.utils.randomToken
+
+
+@v0.1.2
+
+- Implemented common.ajax.asyncPost
+
 
 

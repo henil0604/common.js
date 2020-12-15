@@ -42,6 +42,19 @@
                            @log
                            - default: true
                            - accept: any (bool)
+             - return: null
+             @common.ajax.asyncPost()
+             - description: Make a Async Post AJAX Request.
+             - parameters: @target
+                           - default: null
+                           - accept: any (string(path))
+                           @postData
+                           - default: null
+                           - accept: any (Object)
+                           @log
+                           - default: true
+                           - accept: any (bool)
+             - return: {data, status} (Object)
 
 @common.data
 - type: Object
