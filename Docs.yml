@@ -56,6 +56,7 @@
                            - accept: any (bool)
              - return: {data, status} (Object)
 
+
 @common.data
 - type: Object
 - functions: --No Functions--

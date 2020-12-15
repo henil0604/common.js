@@ -272,7 +272,6 @@ common.ajax.post = (target = null, postData = null, callback = null, log = true)
 }
 
 common.ajax.asyncPost = (target = null, postData = null, log = true) => {
-
     return new Promise((resolve, reject) => {
         $.post(target, postData, (data, status) => {
             resolve({ data: data, status: status })
